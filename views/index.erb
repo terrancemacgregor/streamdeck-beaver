@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>Streamdeck Timer Service</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 0 1rem;
+      }
+      .nav {
+          background: #333;
+          padding: 1rem 0;
+          margin-bottom: 2rem;
+          width: 100%;
+          position: sticky;
+          top: 0;
+      }
+      .nav a {
+          color: white;
+          text-decoration: none;
+          margin-right: 2rem;
+          padding: 0.5rem 1rem;
+      }
+      .nav a:hover {
+          background: #444;
+          border-radius: 4px;
+      }
+      code {
+          background: #f0f0f0;
+          padding: 0.2rem 0.4rem;
+          border-radius: 3px;
+      }
+  </style>
+</head>
+<body>
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/view">View Records</a>
+  <a href="/instructions">Setup</a>
+</div>
+
+<h1>Streamdeck Timer Service</h1>
+<h2>How to Use</h2>
+<p>This service allows you to configure Streamdeck buttons as timers. Each button can trigger a specific time duration with a custom topic.</p>
+
+<h3>Configure Streamdeck Button</h3>
+<ol>
+  <li>In Streamdeck, add a "Website" action to your button</li>
+  <li>Set the URL format: <code>http://0.0.0.0:9987/timer?time=SECONDS&topic=DESCRIPTION</code></li>
+  <li>Example: <code>http://0.0.0.0:9987/timer?time=300&topic=Coffee%20Break</code></li>
+</ol>
+
+<h3>API Endpoints</h3>
+<ul>
+  <li><code>GET /timer?time=30&topic=reading</code> - Start a new timer</li>
+  <li><code>GET /timers</code> - View all timers</li>
+  <li><code>GET /health</code> - Check service status</li>
+</ul>
+</body>
+</html>

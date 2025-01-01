@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  timer_service:
+    build: .
+    ports:
+      - "9987:9987"
+    volumes:
+      - ./data:/app/data
+      - .:/app:ro
+    environment:
+      - RACK_ENV=development
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9987/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
