@@ -8,9 +8,9 @@ configure do
   set :port, 9987
   set :bind, '0.0.0.0'
   set :show_exceptions, false
-  set :public_folder, 'public'
+  enable :static
+  set :public_folder, File.join(File.dirname(__FILE__), 'public')
 end
-
 def db
   FileUtils.mkdir_p '/app/data' unless Dir.exist?('/app/data')
   @db ||= SQLite3::Database.new "/app/data/timer_data.db"
@@ -118,6 +118,8 @@ get '/instructions' do
   erb :instructions
 end
 
+
+
 get '/timers' do
   content_type :json
   begin
@@ -139,4 +141,10 @@ get '/timers' do
     status 500
     { error: "Database error: #{e.message}" }.to_json
   end
+
+  get '/favicon.ico' do
+    content_type 'image/x-icon'
+    send_file File.join(settings.public_folder, 'favicon.ico')
+  end
+
 end
