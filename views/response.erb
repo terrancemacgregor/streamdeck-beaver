@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <style>
+      body {
+          font-family: Arial, sans-serif;
+          max-width: 600px;
+          margin: 0 auto;
+          text-align: center;
+          background: #f5f5f5;
+      }
+      .nav {
+          background: #333;
+          padding: 1rem 0;
+          margin-bottom: 2rem;
+          width: 100%;
+          position: sticky;
+          top: 0;
+      }
+      .nav a {
+          color: white;
+          text-decoration: none;
+          margin-right: 2rem;
+          padding: 0.5rem 1rem;
+      }
+      .nav a:hover {
+          background: #444;
+          border-radius: 4px;
+      }
+      .logo {
+          width: 100px;
+          margin: 20px auto;
+      }
+      .message {
+          background: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          margin: 20px 0;
+      }
+      .view-link {
+          color: #4a90e2;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      .view-link:hover {
+          text-decoration: underline;
+      }
+  </style>
+</head>
+<body>
+<div class="nav">
+  <a href="/">Home</a>
+  <a href="/view">View Records</a>
+  <a href="/instructions">Setup</a>
+</div>
+<div class="logo">
+  <img src="/beaver-logo.svg" alt="Beaver Logo" width="100">
+</div>
+<div class="message">
+  <h2>Timer Created Successfully!</h2>
+  <p>You've set aside <%= format_duration(time) %> for <%= topic %>.</p>
+  <p>Keep up the great work! 🎯</p>
+</div>
+<a href="/view" class="view-link">View All Your Records</a>
+</body>
+</html>
